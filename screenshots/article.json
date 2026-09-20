@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/blog/how-to-check-a-uae-company-name",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "How to check a UAE company name before you apply — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 6880,
+      "bodyTextHash": "2a9a1498ac0af59baf4b0a622b88d46c324f6550139a0d500c50def83973c378",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Home Insights ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/article.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "How to check a UAE company name before you apply — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 6880,
+      "bodyTextHash": "2a9a1498ac0af59baf4b0a622b88d46c324f6550139a0d500c50def83973c378",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Home Insights ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/article-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/article.json"
+}

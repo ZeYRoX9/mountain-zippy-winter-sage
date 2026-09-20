@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/privacy",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Privacy Policy — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 3644,
+      "bodyTextHash": "3a981b786b168cd7636de008ee28a5ffec7918d556b68a5232718f884999e89a",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Home Insights ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/privacy.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Privacy Policy — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 3644,
+      "bodyTextHash": "3a981b786b168cd7636de008ee28a5ffec7918d556b68a5232718f884999e89a",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Home Insights ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/privacy-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/privacy.json"
+}

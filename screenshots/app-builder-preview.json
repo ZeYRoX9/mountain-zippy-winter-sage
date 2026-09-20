@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "HiredFrex — Jobs. Talent. Opportunity.",
+      "hasCanvas": false,
+      "bodyTextLen": 2707,
+      "bodyTextHash": "872ed15f2de0e6cafae8863e28e73ebdf9e434ecd68dbf995e759f5b1996ca91",
+      "bodyTextPrefix": "HiredFrex Insights Jobs CV Builder About Sign in Post a job → AD",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "HiredFrex — Jobs. Talent. Opportunity.",
+      "hasCanvas": false,
+      "bodyTextLen": 2655,
+      "bodyTextHash": "41814487d20f01705ee8e130fe9ba52df87c20905860c4276a445b701aec7412",
+      "bodyTextPrefix": "HiredFrex ADVERTISEMENT Featured article International Job Scams",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

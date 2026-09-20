@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/admin.html",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "HiredFrex — Admin Dashboard",
+      "hasCanvas": false,
+      "bodyTextLen": 152,
+      "bodyTextHash": "86bad02bdcba83cbc3fa75c2fdc47b006cab823bb2f43284dd45852bf47f9193",
+      "bodyTextPrefix": "HiredFrex Admin Dashboard Admin token This is the ADMIN_TOKEN yo",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/admin.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "HiredFrex — Admin Dashboard",
+      "hasCanvas": false,
+      "bodyTextLen": 152,
+      "bodyTextHash": "86bad02bdcba83cbc3fa75c2fdc47b006cab823bb2f43284dd45852bf47f9193",
+      "bodyTextPrefix": "HiredFrex Admin Dashboard Admin token This is the ADMIN_TOKEN yo",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/admin-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/admin.json"
+}

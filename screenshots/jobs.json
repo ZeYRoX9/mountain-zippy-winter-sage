@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/jobs",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "HiredFrex — Daily career information and jobs",
+      "hasCanvas": false,
+      "bodyTextLen": 1567,
+      "bodyTextHash": "54e8a3be970a8c7be40595451ae8c9b0b01a4aed193f8d5e865bb4e2bd99ed61",
+      "bodyTextPrefix": "HiredFrex JOBS Career UAE Jobs Salaries Interviews Guides Resear",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/jobs.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "HiredFrex — Daily career information and jobs",
+      "hasCanvas": false,
+      "bodyTextLen": 1487,
+      "bodyTextHash": "389a89c9a4958bced72460bda824aa57742894c0413afdb173f5005bc6fd3d63",
+      "bodyTextPrefix": "HiredFrex JOBS JOB PORTAL · HIREDFREX.COM/JOBS HiredFrex Jobs 3 ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/jobs-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/jobs.json"
+}

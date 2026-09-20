@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/market-report",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "HiredFrex job market report — September 2026",
+      "hasCanvas": false,
+      "bodyTextLen": 2515,
+      "bodyTextHash": "295d9c444fdc79186060da62cf2487c659ca2d4f978f525a2005aa6b58728e1d",
+      "bodyTextPrefix": "H HiredFrex Jobs Guides Insights Verification About Sign in Find",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/market.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "HiredFrex job market report — September 2026",
+      "hasCanvas": false,
+      "bodyTextLen": 2515,
+      "bodyTextHash": "6b9c603297899f5bd7ae1a93c78790ac78bf5e0f89ac13c8254827cb34775bd9",
+      "bodyTextPrefix": "H HiredFrex Sign in Find jobs Jobs Guides Insights Verification ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/market-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/market.json"
+}

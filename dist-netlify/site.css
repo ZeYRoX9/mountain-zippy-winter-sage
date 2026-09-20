@@ -1,0 +1,52 @@
+
+:root { --navy:#10243f; --gold:#8a5f18; --paper:#f7f3ea; --surface:#fffdf8; --ink:#1b1915; --muted:#5c564c; --line:#e4dccb; }
+*{box-sizing:border-box} html{background:var(--paper);color:var(--ink)}
+body{margin:0;font-family:"Source Sans 3",sans-serif;font-size:18px;line-height:1.65;background:var(--paper);color:var(--ink)}
+a{color:inherit} .skip{position:absolute;left:12px;top:-40px;background:var(--navy);color:#fff;padding:8px 12px;border-radius:8px}
+.skip:focus{top:12px;z-index:80}
+.top{position:sticky;top:0;z-index:40;background:rgba(247,243,234,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.bar{display:flex;align-items:center;gap:12px;height:72px}
+.brand{display:flex;gap:10px;align-items:center;text-decoration:none}
+.brand img{width:40px;height:40px;border-radius:50%;background:#fff}
+.brand b{display:block;font-family:Newsreader,Georgia,serif;font-size:22px;color:var(--navy)}
+.brand b span{color:var(--gold)} .brand small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7a7368}
+.desk{display:none;gap:4px;margin-left:8px}
+.nav-a{padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;color:#5c564c}
+.nav-a.on,.nav-a:hover{background:#f3ead4;color:var(--navy)}
+.signin{margin-left:auto;background:var(--navy);color:#fffdf8;text-decoration:none;border-radius:10px;padding:8px 12px;font-weight:700;font-size:14px}
+.mob{display:flex;gap:8px;overflow:auto;padding:8px 16px;border-top:1px solid var(--line)}
+.mob .nav-a{border:1px solid var(--line);background:#fffdf8;white-space:nowrap}
+@media(min-width:960px){.desk{display:flex}.mob{display:none}}
+.grid{display:grid;gap:40px;padding:40px 16px 64px;align-items:start}
+@media(min-width:960px){.grid{grid-template-columns:minmax(0,1fr) 300px}}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;color:var(--navy);line-height:1.18;letter-spacing:-.02em}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0}
+.muted{color:var(--muted)}
+.prose{font-family:Literata,Georgia,serif;font-size:1.175rem;line-height:1.85;max-width:66ch}
+.prose h2{font-size:1.6rem;margin:2.1rem 0 .8rem}
+.prose p{margin:0 0 1.15rem}
+.prose a{color:#1a3658;text-underline-offset:3px}
+.prose table{width:100%;border-collapse:collapse;font-family:"Source Sans 3",sans-serif;font-size:.95rem}
+.prose th,.prose td{border:1px solid var(--line);padding:.65rem .75rem;text-align:left}
+.prose th{background:#efe8d8}
+.rail{border:1px solid var(--line);background:var(--surface);border-radius:24px;padding:20px;position:sticky;top:88px}
+.joblist{list-style:none;padding:0;margin:12px 0}
+.joblist li{border-top:1px solid var(--line);padding:10px 0}
+.joblist a{text-decoration:none;display:block}
+.joblist span{display:block;color:var(--muted);font-size:14px}
+.more{color:var(--gold);font-weight:700}
+.hire{margin-top:16px;padding:14px;background:#f3ead4;border-radius:16px;border:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;height:44px;background:var(--navy);color:#fffdf8;text-decoration:none;border-radius:12px;padding:0 14px;font-weight:700;font-size:14px;border:0;cursor:pointer}
+footer{background:var(--navy);color:#fffdf8;padding:48px 0 16px}
+.foot{display:grid;gap:24px}
+@media(min-width:800px){.foot{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+.foot a{display:block;color:#d8d0c4;text-decoration:none;margin:6px 0;font-size:14px}
+.copy{text-align:center;color:#9aa3;font-size:12px;padding:16px}
+.cookie{position:fixed;bottom:0;left:0;right:0;background:#fffdf8;border-top:1px solid var(--line);padding:16px;display:flex;gap:12px;align-items:center;z-index:50}
+.cookie[hidden]{display:none}
+.cards{display:grid;gap:14px} @media(min-width:700px){.cards.two{grid-template-columns:1fr 1fr}}
+.card{display:block;border:1px solid var(--line);background:var(--surface);border-radius:22px;padding:20px;text-decoration:none}
+.form{display:grid;gap:10px;max-width:460px}
+.form input,.form textarea,.form select{height:44px;border:1px solid var(--line);border-radius:12px;padding:0 12px;font:inherit;background:#fff}
+.form textarea{height:auto;padding:10px 12px}

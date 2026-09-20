@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/blog",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Career insights — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 5735,
+      "bodyTextHash": "6bb6c46bdd56a80873c078b2e442f7a9129bb9fff2a0e38087e83d0a5149a0a9",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Home Insights ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/blog.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Career insights — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 5735,
+      "bodyTextHash": "d03f2431f885c12750824e96b72c5678c3634b9e63d7a64167acc9667fed249d",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Sign in Home I",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/blog-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/blog.json"
+}

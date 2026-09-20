@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>HiredFrex — Admin Dashboard</title>
+<style>
+  :root{--navy:#0c1a3a;--navy2:#15264f;--gold:#c6a04e;--gold-deep:#a8842f;--gold-soft:#f4ecd7;
+    --paper:#f6f7f3;--surface:#fff;--line:#e5e2da;--line2:#ddd9cf;--ink:#0c1a3a;--ink2:#515a6e;--ink3:#8c93a3}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5}
+  .bar{background:var(--navy);color:#fff;padding:15px 22px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
+  .bar b{font-size:18px}.bar b i{color:var(--gold);font-style:normal}
+  .bar .sp{opacity:.65;font-size:14px}
+  .bar .out{margin-left:auto;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;
+    padding:7px 14px;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer}
+  .wrap{max-width:1000px;margin:0 auto;padding:24px 22px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:12px;box-shadow:0 1px 2px rgba(12,26,58,.05)}
+  label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+  input{width:100%;padding:11px 13px;border:1px solid var(--line2);border-radius:10px;font-size:15px;outline:none;background:var(--paper)}
+  input:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft)}
+  .btn{border:none;border-radius:10px;padding:10px 16px;font-weight:700;font-size:14px;cursor:pointer;transition:.15s}
+  .btn-navy{background:var(--navy);color:#fff}.btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-ghost{background:#fff;border:1px solid var(--line2);color:var(--navy)}
+  .btn-red{background:#fbe3e3;color:#a12525;border:1px solid #f3c9c9}
+  .btn.sm{padding:7px 12px;font-size:13px}
+  .tabs{display:flex;gap:8px;margin:4px 0 18px;flex-wrap:wrap}
+  .tab{padding:9px 16px;border-radius:999px;border:1px solid var(--line2);background:#fff;font-weight:600;font-size:13.5px;cursor:pointer}
+  .tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}
+  .stat .v{font-size:30px;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:12.5px;color:var(--ink2);font-weight:600;margin-top:3px}
+  .row{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+  .co{font-weight:700;font-size:15.5px}.meta{font-size:13px;color:var(--ink2)}.sub{font-size:12px;color:var(--ink3);margin-top:2px}
+  .actions{display:flex;gap:7px;flex-wrap:wrap}
+  .badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+  .b-pending{background:#fff4d6;color:#8a6d1c}.b-approved,.b-active{background:#dff3ea;color:#0a6f58}
+  .b-rejected,.b-closed{background:#fbe3e3;color:#a12525}.b-seeker{background:#eef1f6;color:#42506b}
+  .b-needs_verification{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}
+  .b-employer{background:#f4ecd7;color:#8a6d1c}.b-admin{background:#e7ddff;color:#5b43a0}
+  .muted{color:var(--ink3)}.hide{display:none}.note{font-size:13px;color:var(--ink2);margin-top:8px}
+  .creds{background:var(--gold-soft);border:1px solid #ecdfbe;border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13.5px}
+  .creds b{color:var(--navy)}
+</style>
+</head>
+<body>
+<div class="bar"><b>Hired<i>Frex</i></b><span class="sp">Admin Dashboard</span><button class="out hide" id="btnOut" onclick="logout()">Lock</button></div>
+<div class="wrap">
+
+  <div class="card" id="loginCard">
+    <label>Admin token</label>
+    <input id="token" type="password" placeholder="Paste your ADMIN_TOKEN" onkeydown="if(event.key==='Enter')connect()"/>
+    <p class="note">This is the <b>ADMIN_TOKEN</b> you set in Netlify environment variables. It is kept only in this page while open.</p>
+    <div style="margin-top:12px"><button class="btn btn-navy" onclick="connect()">Connect</button></div>
+    <div id="loginErr" class="note" style="color:#a12525"></div>
+  </div>
+
+  <div id="panel" class="hide">
+    <div class="tabs">
+      <button class="tab on" data-t="overview" onclick="tab('overview')">Overview</button>
+      <button class="tab" data-t="employers" onclick="tab('employers')">Employers</button>
+      <button class="tab" data-t="jobs" onclick="tab('jobs')">Jobs</button>
+      <button class="tab" data-t="applications" onclick="tab('applications')">Applications</button>
+      <button class="tab" data-t="users" onclick="tab('users')">Users</button>
+      <button class="tab" data-t="blog" onclick="tab('blog')">Blog</button>
+      <button class="tab" data-t="messages" onclick="tab('messages')">Messages</button>
+      <button class="tab" data-t="apikeys" onclick="tab('apikeys')">API Keys</button>
+      <button class="btn btn-ghost sm" style="margin-left:auto" onclick="load()">↻ Refresh</button>
+    </div>
+    <div id="view"></div>
+  </div>
+
+</div>
+<script>
+  const API='/api';let TOKEN='';let TAB='overview';
+  function hdr(){return{'Content-Type':'application/json','x-admin-token':TOKEN}}
+  function esc(s){return String(s==null?'':s).replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}
+  function date(s){try{return new Date(s).toLocaleDateString()}catch(e){return''}}
+
+  async function connect(){
+    TOKEN=document.getElementById('token').value.trim();
+    if(!TOKEN){document.getElementById('loginErr').textContent='Enter your admin token.';return;}
+    const r=await fetch(`${API}/admin-data?type=stats`,{headers:hdr()});
+    if(r.status===401){document.getElementById('loginErr').textContent='That token was not accepted.';return;}
+    document.getElementById('loginCard').classList.add('hide');
+    document.getElementById('panel').classList.remove('hide');
+    document.getElementById('btnOut').classList.remove('hide');
+    load();
+  }
+  function logout(){TOKEN='';location.reload();}
+  function tab(t){TAB=t;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.t===t));load();}
+
+  async function load(){
+    const v=document.getElementById('view');v.innerHTML='<div class="card muted">Loading…</div>';
+    try{
+      if(TAB==='overview')return renderOverview(v);
+      if(TAB==='employers')return renderEmployers(v);
+      if(TAB==='jobs')return renderJobs(v);
+      if(TAB==='applications')return renderApps(v);
+      if(TAB==='users')return renderUsers(v);
+      if(TAB==='blog')return renderBlogAdmin(v);
+      if(TAB==='messages')return renderMessages(v);
+      if(TAB==='apikeys')return renderApiKeys(v);
+    }catch(e){v.innerHTML='<div class="card muted">Could not load. Is the backend deployed?</div>';}
+  }
+
+  async function renderApiKeys(v){
+    v.innerHTML = `<div class="card"><div class="row"><div>
+      <div class="co">Create a new API key</div>
+      <div class="meta">Give it a label so you remember who it's for (e.g. "Acme Aggregator" or a partner's name).</div>
+      <input id="newKeyLabel" placeholder="Key label / partner name" style="margin-top:10px;max-width:320px"/>
+      </div>
+      <button class="btn btn-gold sm" onclick="createApiKey()">Generate key</button>
+    </div><div class="note" id="newKeyResult"></div></div>
+    <div class="card muted" id="keysList">Loading keys…</div>`;
+    const d = await (await fetch(`${API}/admin-data?type=api_keys`,{headers:hdr()})).json();
+    const list = document.getElementById('keysList');
+    if(!d.keys || !d.keys.length){ list.innerHTML = '<div class="card muted">No API keys yet.</div>'; return; }
+    list.innerHTML = d.keys.map(k=>`<div class="card"><div class="row">
+      <div><div class="co">${esc(k.label)} ${k.revoked?'<span class="badge">revoked</span>':''}</div>
+        <div class="meta">Created ${date(k.created_at)}${k.last_used_at?' · Last used '+date(k.last_used_at):' · Never used yet'}</div></div>
+      ${!k.revoked?`<button class="btn btn-red sm" onclick="revokeApiKey('${k.id}')">Revoke</button>`:''}
+    </div></div>`).join('');
+  }
+  async function createApiKey(){
+    const label=(document.getElementById('newKeyLabel').value||'').trim();
+    const res=document.getElementById('newKeyResult');
+    if(!label){res.style.color='#a12525';res.textContent='Enter a label first.';return;}
+    const r=await fetch(`${API}/admin-data`,{method:'POST',headers:hdr(),body:JSON.stringify({action:'create_api_key',label})});
+    const d=await r.json();
+    if(d.ok){
+      res.style.color='#0a6f58';
+      res.innerHTML=`<b>Copy this now — it will not be shown again:</b><br/><code style="user-select:all;background:#f7f5ef;padding:8px 12px;border-radius:6px;display:inline-block;margin-top:6px">${esc(d.key)}</code>`;
+      document.getElementById('newKeyLabel').value='';
+      renderApiKeys(document.getElementById('view'));
+    } else { res.style.color='#a12525'; res.textContent=d.error||'Could not create key.'; }
+  }
+  async function revokeApiKey(id){
+    if(!confirm('Revoke this key? Anything using it will stop working immediately.'))return;
+    await fetch(`${API}/admin-data`,{method:'POST',headers:hdr(),body:JSON.stringify({action:'revoke_api_key',id})});
+    renderApiKeys(document.getElementById('view'));
+  }
+
+  async function renderOverview(v){
+    const d=await(await fetch(`${API}/admin-data?type=stats`,{headers:hdr()})).json();
+    const s=d.stats||{};const emp=s.employers||{};const jb=s.jobs||{};
+    v.innerHTML=`<div class="grid">
+      <div class="stat"><div class="v">${s.users||0}</div><div class="l">Users (${s.users_verified||0} verified)</div></div>
+      <div class="stat"><div class="v">${(jb.active||0)}</div><div class="l">Active jobs</div></div>
+      <div class="stat"><div class="v">${s.applications||0}</div><div class="l">Applications</div></div>
+      <div class="stat"><div class="v">${emp.pending||0}</div><div class="l">Pending employers</div></div>
+    </div>
+    <div class="card"><div class="row"><div><div class="co">Employers</div><div class="meta">${emp.approved||0} approved · ${emp.pending||0} pending · ${emp.rejected||0} rejected</div></div>
+      <button class="btn btn-gold sm" onclick="tab('employers')">Manage →</button></div></div>
+    <div class="card"><div class="row"><div><div class="co">Jobs</div><div class="meta">${jb.active||0} active · ${jb.closed||0} closed</div></div>
+      <button class="btn btn-gold sm" onclick="tab('jobs')">Manage →</button></div></div>`;
+  }
+
+  async function renderEmployers(v){
+    const d=await(await fetch(`${API}/admin-employers?status=pending`,{headers:hdr()})).json();
+    const ap=await(await fetch(`${API}/admin-employers?status=approved`,{headers:hdr()})).json();
+    const list=[...(d.employers||[]),...(ap.employers||[])];
+    if(!list.length){v.innerHTML='<div class="card muted">No employer requests yet.</div>';return;}
+    v.innerHTML=list.map(e=>`<div class="card"><div class="row">
+      <div><div class="co">${esc(e.company)} <span class="badge b-${e.status}">${e.status}</span></div>
+        <div class="meta">${esc(e.contact_email)}${e.website?' · '+esc(e.website):''}</div>
+        <div class="sub">${date(e.created_at)}</div></div>
+      ${e.status==='pending'?`<div class="actions">
+        <button class="btn btn-gold sm" onclick="approve('${e.id}')">Approve</button>
+        <button class="btn btn-ghost sm" onclick="reject('${e.id}')">Reject</button></div>`:''}
+      </div><div id="cred-${e.id}"></div></div>`).join('');
+  }
+  async function approve(id){
+    const r=await fetch(`${API}/admin-employers`,{method:'POST',headers:hdr(),body:JSON.stringify({id,action:'approve'})});
+    const d=await r.json();
+    if(r.ok&&d.login){
+      const box=document.getElementById('cred-'+id);
+      if(box)box.innerHTML=`<div class="creds">✓ Approved. Share these login details:<br/><b>Email:</b> ${esc(d.login.email)}<br/><b>Temp password:</b> ${d.login.temp_password?'<b>'+esc(d.login.temp_password)+'</b>':'(existing account)'}</div>`;
+      setTimeout(load,4000);
+    }else{alert(d.message||d.error||'Done');load();}
+  }
+  async function reject(id){
+    if(!confirm('Reject this employer request?'))return;
+    const d=await(await fetch(`${API}/admin-employers`,{method:'POST',headers:hdr(),body:JSON.stringify({id,action:'reject'})})).json();
+    alert(d.message||d.error||'Done');load();
+  }
+
+  async function renderJobs(v){
+    const d=await(await fetch(`${API}/admin-data?type=jobs`,{headers:hdr()})).json();
+    if(!d.jobs||!d.jobs.length){v.innerHTML='<div class="card muted">No jobs posted yet.</div>';return;}
+    const sorted=[...d.jobs].sort((a,b)=>(a.status==='needs_verification'?-1:0)-(b.status==='needs_verification'?-1:0));
+    v.innerHTML=sorted.map((j,idx)=>`<div class="card" style="${j.status==='needs_verification'?'border:1.5px solid #d97706':''}"><div class="row">
+      <div><div class="co">${esc(j.title)} <span class="badge b-${j.status}">${j.status==='needs_verification'?'⚠ needs verification':j.status}</span>${j.source==='jooble'?' <span class="badge">via Jooble</span>':''}</div>
+        <div class="meta">${esc(j.company)} · ${esc(j.location)} · ${esc(j.category||'')} · ${esc(j.type||'')}${j.remote?' · Remote':''}${j.salary?' · '+esc(j.salary):''} · ${j.applicants} applicant${j.applicants===1?'':'s'}</div>
+        <div class="sub">${esc(j.employer_email||'no employer')} · posted ${date(j.created_at)}${j.last_checked?' · last checked '+date(j.last_checked):''} · status: ${esc(j.status)}</div>
+        ${j.flag_reasons?`<div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:13px;color:#9a3412"><b>Flagged:</b> ${esc(j.flag_reasons).split(' | ').join('<br/>• ')}</div>`:''}
+        <button class="btn btn-ghost sm" style="margin-top:8px" onclick="toggleJobDetail(${idx})">View full listing ▾</button>
+        <div id="jd-${idx}" style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--line,#eee)">
+          ${j.description?`<div style="font-weight:700;font-size:13px;margin-bottom:3px">Description</div><div class="meta" style="white-space:pre-wrap;margin-bottom:10px">${esc(j.description)}</div>`:'<div class="meta">No description provided.</div>'}
+          ${j.requirements?`<div style="font-weight:700;font-size:13px;margin-bottom:3px">Requirements</div><div class="meta" style="white-space:pre-wrap;margin-bottom:10px">${esc(j.requirements)}</div>`:''}
+          ${j.benefits?`<div style="font-weight:700;font-size:13px;margin-bottom:3px">Benefits</div><div class="meta" style="white-space:pre-wrap">${esc(j.benefits)}</div>`:''}
+        </div>
+      </div>
+      <div class="actions">
+        ${j.source==='jooble'?`<a class="btn btn-ghost sm" href="${esc(j.source_url)}" target="_blank">View source</a>`:''}
+        ${(j.status==='pending'||j.status==='needs_verification')?`<button class="btn btn-gold sm" onclick="jobAct('${j.id}','activate_job')">Approve &amp; publish</button>`:''}
+        ${j.status==='active'?`<button class="btn btn-ghost sm" onclick="jobAct('${j.id}','close_job')">Close</button>`:''}
+        ${j.status==='closed'?`<button class="btn btn-ghost sm" onclick="jobAct('${j.id}','activate_job')">Reopen</button>`:''}
+        <button class="btn btn-red sm" onclick="jobAct('${j.id}','delete_job',1)">Delete</button>
+      </div></div></div>`).join('');
+  }
+  function toggleJobDetail(idx){
+    const el=document.getElementById('jd-'+idx); if(!el)return;
+    el.style.display=el.style.display==='none'?'block':'none';
+    const btn=el.previousElementSibling;
+    if(btn)btn.textContent=el.style.display==='none'?'View full listing ▾':'Hide listing ▴';
+  }
+  async function jobAct(id,action,confirmFirst){
+    if(confirmFirst&&!confirm('Permanently delete this job and its applications?'))return;
+    const r=await fetch(`${API}/admin-data`,{method:'POST',headers:hdr(),body:JSON.stringify({action,id})});
+    const d=await r.json().catch(()=>({}));
+    if(action==='activate_job'&&d.caption){
+      if(navigator.clipboard)navigator.clipboard.writeText(d.caption).catch(()=>{});
+      alert('Job is live! LinkedIn post copied to your clipboard (also emailed to you):\n\n'+d.caption);
+    }
+    load();
+  }
+
+  async function renderApps(v){
+    const d=await(await fetch(`${API}/admin-data?type=applications`,{headers:hdr()})).json();
+    if(!d.applications||!d.applications.length){v.innerHTML='<div class="card muted">No applications yet.</div>';return;}
+    v.innerHTML=d.applications.map(a=>`<div class="card"><div class="row">
+      <div><div class="co">${esc(a.name)}</div><div class="meta">${esc(a.email)}${a.phone?' · '+esc(a.phone):''}</div>
+        <div class="sub">${esc(a.job_title||'')} @ ${esc(a.company||'')} · ${date(a.created_at)}</div></div>
+      ${a.has_cv?`<button class="btn btn-ghost sm" onclick="dlCv('${a.id}')">↓ CV</button>`:'<span class="badge b-seeker">No CV</span>'}
+      </div></div>`).join('');
+  }
+  async function dlCv(id){
+    const r=await fetch(`${API}/application-cv?id=${encodeURIComponent(id)}`,{headers:hdr()});const d=await r.json();
+    if(!r.ok){alert(d.error||'No CV');return;}
+    const a=document.createElement('a');a.href='data:application/octet-stream;base64,'+d.data;a.download=d.filename||'cv';
+    document.body.appendChild(a);a.click();a.remove();
+  }
+
+  async function renderUsers(v){
+    const d=await(await fetch(`${API}/admin-data?type=users`,{headers:hdr()})).json();
+    if(!d.users||!d.users.length){v.innerHTML='<div class="card muted">No users yet.</div>';return;}
+    v.innerHTML=d.users.map(u=>`<div class="card"><div class="row">
+      <div><div class="co">${esc(u.name)} <span class="badge b-${u.role}">${u.role}</span>${u.email_verified?'':' <span class="badge b-pending">unverified</span>'}</div>
+        <div class="meta">${esc(u.email)}</div><div class="sub">${date(u.created_at)}</div></div>
+      </div></div>`).join('');
+  }
+
+  // ===== BLOG CMS =====
+  let EDIT_ID=null; let BLOG_IMG=null; let AUTHOR_IMG=null;
+  function blogImgPicked(file){
+    if(!file){BLOG_IMG=null;return;}
+    const img=new Image();
+    img.onload=()=>{
+      const scale=Math.min(1,1200/Math.max(img.width,img.height));
+      const c=document.createElement('canvas');
+      c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      BLOG_IMG=c.toDataURL('image/jpeg',0.82);
+      document.getElementById('bImgStatus').textContent='Image ready ('+Math.round(BLOG_IMG.length/1370)+' KB) — will be saved with the post.';
+    };
+    img.onerror=()=>{BLOG_IMG=null;document.getElementById('bImgStatus').textContent='Could not read that image.';};
+    img.src=URL.createObjectURL(file);
+  }
+  function authorImgPicked(file){
+    if(!file){AUTHOR_IMG=null;return;}
+    const img=new Image();
+    img.onload=()=>{
+      const scale=Math.min(1,320/Math.max(img.width,img.height));
+      const c=document.createElement('canvas');
+      c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      AUTHOR_IMG=c.toDataURL('image/jpeg',0.85);
+      const prev=document.getElementById('bAuthPrev');
+      if(prev){prev.src=AUTHOR_IMG;prev.style.display='block';}
+      document.getElementById('bAuthStatus').textContent='Author photo ready — saved with the post.';
+    };
+    img.onerror=()=>{AUTHOR_IMG=null;document.getElementById('bAuthStatus').textContent='Could not read that photo.';};
+    img.src=URL.createObjectURL(file);
+  }
+  function authorPickChanged(){
+    const s=document.getElementById('bAuthorPick');
+    const i=document.getElementById('bAuthor');
+    if(!s||!i)return;
+    if(s.value==='__custom'){i.value='';i.focus();}
+    else i.value=s.value;
+  }
+    async function renderBlogAdmin(v){
+    const d=await(await fetch(`${API}/blog?all=1`,{headers:hdr()})).json();
+    const list=(d.posts||[]).map(p=>`<div class="card"><div class="row">
+      <div><div class="co">${esc(p.title)} ${p.published?'<span class="badge b-active">live</span>':'<span class="badge b-pending">draft</span>'}</div>
+        <div class="meta">/blog/${esc(p.slug)} · ${esc(p.category)}</div><div class="sub">${esc(p.author)} · ${date(p.created_at)}</div></div>
+      <div class="actions">
+        <a class="btn btn-ghost sm" href="/blog/${esc(p.slug)}" target="_blank">View</a>
+        <button class="btn btn-gold sm" onclick="editPost('${p.id}')">Edit</button>
+        <button class="btn btn-ghost sm" onclick="togglePost('${p.id}',${!p.published})">${p.published?'Unpublish':'Publish'}</button>
+        <button class="btn btn-red sm" onclick="delPost('${p.id}')">Delete</button>
+      </div></div></div>`).join('');
+    v.innerHTML=`<div class="card">
+      <div class="co" style="margin-bottom:10px" id="bfTitle">Write a new article</div>
+      <label>Title</label><input id="bTitle" placeholder="Article title"/>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <div style="flex:1;min-width:180px"><label>Slug (URL)</label><input id="bSlug" placeholder="auto from title"/></div>
+        <div style="flex:1;min-width:180px"><label>Category</label><input id="bCat" placeholder="e.g. UAE jobs" value="Career advice"/></div>
+        <div style="flex:1;min-width:180px"><label>Author</label>
+          <select id="bAuthorPick" onchange="authorPickChanged()" style="width:100%;padding:11px 13px;border:1px solid var(--line2);border-radius:10px;font-size:15px;background:var(--paper)">
+            <option value="HiredFrex Team">HiredFrex Team</option>
+            <option value="Paul Mensah">Paul Mensah</option>
+            <option value="Amira Hassan">Amira Hassan</option>
+            <option value="Nour El-Sayed">Nour El-Sayed</option>
+            <option value="__custom">Custom name…</option>
+          </select>
+          <input id="bAuthor" value="HiredFrex Team" style="margin-top:8px" placeholder="Author name as shown on the article"/>
+        </div>
+      </div>
+      <label style="margin-top:10px">Author photo <span style="font-weight:400;color:var(--ink3)">(optional · shown on the article byline)</span></label>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
+        <input type="file" id="bAuthFile" accept="image/*" onchange="authorImgPicked(this.files[0])"/>
+        <img id="bAuthPrev" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid var(--line2);display:none"/>
+      </div>
+      <div class="note" id="bAuthStatus"></div>
+      
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <div style="flex:1;min-width:180px"><label>Author role</label><input id="bRole" placeholder="e.g. Editor" value="Editorial"/></div>
+        <div style="flex:1;min-width:180px"><label>Reviewer</label><input id="bReviewer" placeholder="Name or HiredFrex Editorial Team"/></div>
+        <div style="flex:1;min-width:180px"><label>Review date</label><input id="bReviewDate" type="date"/></div>
+      </div>
+      <label style="margin-top:10px">Author bio <span style="font-weight:400;color:var(--ink3)">(one or two sentences, optional)</span></label>
+      <input id="bBio" placeholder="Shown on the article byline. Leave blank if none."/>
+      <label style="margin-top:10px">Sources <span style="font-weight:400;color:var(--ink3)">(optional · one per line · URLs or named documents)</span></label>
+      <textarea id="bSources" style="width:100%;min-height:70px;padding:11px;border:1px solid var(--line2);border-radius:10px;font-size:13.5px" placeholder="Only list sources you actually used."></textarea>
+      <label style="margin-top:10px">Methodology <span style="font-weight:400;color:var(--ink3)">(optional · how this piece was reported)</span></label>
+      <textarea id="bMethod" style="width:100%;min-height:70px;padding:11px;border:1px solid var(--line2);border-radius:10px;font-size:13.5px" placeholder="e.g. Checked against the live HiredFrex jobs table on 19 Sep 2026."></textarea>
+
+      <label style="margin-top:10px">Excerpt (meta description, 1–2 sentences)</label><input id="bExcerpt"/>
+      <label style="margin-top:10px">Featured image <span style="font-weight:400;color:var(--ink3)">(optional · JPG/PNG · resized automatically)</span></label>
+      <input type="file" id="bImgFile" accept="image/*" onchange="blogImgPicked(this.files[0])"/>
+      <div class="note" id="bImgStatus"></div>
+      <label style="margin-top:10px">Body — use "## Heading" lines and blank-line paragraphs</label>
+      <textarea id="bBody" style="width:100%;min-height:220px;padding:11px;border:1px solid var(--line2);border-radius:10px;font-family:ui-monospace,monospace;font-size:13.5px"></textarea>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn btn-navy" onclick="savePost(true)">Publish</button>
+        <button class="btn btn-ghost" onclick="savePost(false)">Save as draft</button>
+        <button class="btn btn-ghost" onclick="clearPost()" id="bCancel" style="display:none">Cancel edit</button>
+      </div>
+      <div class="note" id="bStatus"></div>
+    </div>
+    <div class="co" style="margin:16px 0 10px">All articles</div>${list||'<div class="card muted">No articles yet.</div>'}`;
+  }
+  async function savePost(published){
+    const body={title:val2('bTitle'),slug:val2('bSlug'),category:val2('bCat'),author:val2('bAuthor')||'HiredFrex Editorial Team',authorRole:val2('bRole'),authorBio:val2('bBio'),reviewer:val2('bReviewer'),reviewDate:val2('bReviewDate'),sources:val2('bSources'),methodology:val2('bMethod'),excerpt:val2('bExcerpt'),body:val2('bBody'),published};
+    if(BLOG_IMG)body.image=BLOG_IMG;
+    if(AUTHOR_IMG)body.authorPhoto=AUTHOR_IMG;
+    const st=document.getElementById('bStatus');
+    if(!body.title||!body.body){st.style.color='#a12525';st.textContent='Title and body are required.';return;}
+    st.style.color='';st.textContent='Saving…';
+    const method=EDIT_ID?'PATCH':'POST'; if(EDIT_ID)body.id=EDIT_ID;
+    const r=await fetch(`${API}/blog`,{method,headers:hdr(),body:JSON.stringify(body)});
+    const d=await r.json();
+    if(r.ok){st.style.color='#0a6f58';st.textContent=published?'Published! Live at /blog/'+(d.post?d.post.slug:''):'Saved as draft.';EDIT_ID=null;BLOG_IMG=null;AUTHOR_IMG=null;setTimeout(load,900);}
+    else{st.style.color='#a12525';st.textContent=d.error||'Could not save.';}
+  }
+  async function editPost(id){
+    const d=await(await fetch(`${API}/blog?id=${id}`,{headers:hdr()})).json();
+    if(!d.post)return; const p=d.post; EDIT_ID=id;
+    document.getElementById('bfTitle').textContent='Editing: '+p.title;
+    document.getElementById('bTitle').value=p.title;document.getElementById('bSlug').value=p.slug;
+    document.getElementById('bCat').value=p.category;document.getElementById('bAuthor').value=p.author||'HiredFrex Team';
+    const pick=document.getElementById('bAuthorPick');
+    if(pick){
+      const known=['HiredFrex Team','Paul Mensah','Amira Hassan','Nour El-Sayed'];
+      pick.value=known.includes(p.author)?p.author:'__custom';
+    }
+    const prev=document.getElementById('bAuthPrev');
+    AUTHOR_IMG=null;
+    if(prev){
+      if(p.author_photo_data){prev.src='/api/blog-image?id='+p.id+'&kind=author';prev.style.display='block';}
+      else {prev.removeAttribute('src');prev.style.display='none';}
+    }
+    document.getElementById('bExcerpt').value=p.excerpt;document.getElementById('bBody').value=p.body;
+    const setv=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v||'';};
+    setv('bRole',p.author_role);setv('bBio',p.author_bio);setv('bReviewer',p.reviewer);setv('bReviewDate',p.review_date);setv('bSources',p.sources);setv('bMethod',p.methodology);
+    document.getElementById('bCancel').style.display='inline-block';
+    window.scrollTo({top:0});
+  }
+  function clearPost(){EDIT_ID=null;load();}
+  async function togglePost(id,published){await fetch(`${API}/blog`,{method:'PATCH',headers:hdr(),body:JSON.stringify({id,published})});load();}
+  async function delPost(id){if(!confirm('Delete this article permanently?'))return;
+    await fetch(`${API}/blog?id=${id}`,{method:'DELETE',headers:hdr()});load();}
+  function val2(id){return (document.getElementById(id).value||'').trim();}
+
+  // ===== MESSAGES =====
+  async function renderMessages(v){
+    const d=await(await fetch(`${API}/admin-data?type=messages`,{headers:hdr()})).json();
+    if(!d.messages||!d.messages.length){v.innerHTML='<div class="card muted">No messages yet.</div>';return;}
+    v.innerHTML=d.messages.map(m=>`<div class="card">
+      <div class="row"><div><div class="co">${esc(m.name)} <span class="badge b-seeker">${esc(m.topic||'General')}</span></div>
+      <div class="meta">${esc(m.email)}</div><div class="sub">${date(m.created_at)}</div></div>
+      <a class="btn btn-ghost sm" href="mailto:${esc(m.email)}?subject=Re: ${encodeURIComponent(m.topic||'Your message to HiredFrex')}">Reply</a></div>
+      <p style="font-size:14px;color:var(--ink2);margin-top:10px">${esc(m.message)}</p></div>`).join('');
+  }
+</script>
+</body>
+</html>

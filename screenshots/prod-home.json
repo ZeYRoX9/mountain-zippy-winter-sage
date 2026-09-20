@@ -1,0 +1,40 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "HiredFrex — Career information for people who have to apply",
+      "hasCanvas": false,
+      "bodyTextLen": 5040,
+      "bodyTextHash": "b5edd73f90a837c4acca54b1802c2430a573992364fda7cdcaaa0c8566b7d633",
+      "bodyTextPrefix": "HiredFrex JOBS. TALENT. OPPORTUNITY. Insights Guides Scam checks",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/prod-home.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "HiredFrex — Career information for people who have to apply",
+      "hasCanvas": false,
+      "bodyTextLen": 5021,
+      "bodyTextHash": "7d53f38fe53788843139c4a96871fdfe9bb52c7c2fadde8a8a7921f046964e9e",
+      "bodyTextPrefix": "HiredFrex JOBS. TALENT. OPPORTUNITY. Career advice Jobseeker Ins",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/prod-home-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/prod-home.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "mobile: body text replaced (similar length, page start changed)"
+  ]
+}

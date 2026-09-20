@@ -1,0 +1,16 @@
+# hiredfrex.com is the static site + Netlify Functions.
+# Do not run `npm run build` here: that is the Vercel/Nitro preview build and
+# it also runs database migrations that fail on the existing Neon jobs table.
+
+[build]
+  command = "python3 scripts/generate_netlify.py"
+  publish = "dist-netlify"
+
+[functions]
+  directory = "dist-netlify/netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

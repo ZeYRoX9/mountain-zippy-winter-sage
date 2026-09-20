@@ -1,0 +1,40 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "HiredFrex — Career guides and honest job listings",
+      "hasCanvas": false,
+      "bodyTextLen": 5550,
+      "bodyTextHash": "1b4b85f3fdab52629cf83988ebabbe75dc312d92cce7e9811ed9546e5ef0a3f0",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Home Insights ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "HiredFrex — Career guides and honest job listings",
+      "hasCanvas": false,
+      "bodyTextLen": 5550,
+      "bodyTextHash": "f09ca2795d72b25ca054c95d336610400d7c0dda97ae609a7270ced9251fdfb5",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Sign in Home I",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "mobile: body text replaced (similar length, page start changed)"
+  ]
+}

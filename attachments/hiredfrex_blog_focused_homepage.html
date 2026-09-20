@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0c1a3a;--navy2:#15264f;--gold:#c6a04e;--gold2:#d6b463;--gold-soft:#f4ecd7;--paper:#f8f7f3;--ink2:#515a6e;--ink3:#8c93a3;--line:#ebe8e0;--fd:'Fraunces',Georgia,serif;--fs:'Plus Jakarta Sans',sans-serif}
+body{font-family:var(--fs);background:var(--paper);color:var(--navy)}
+.site{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* Header */
+header{background:var(--navy);padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:var(--fd);color:#fff;font-size:22px;font-weight:700}.brand b{color:var(--gold2)}
+nav a{color:#b0bcda;font-size:13.5px;font-weight:600;margin-left:20px;text-decoration:none}
+nav a.active{color:var(--gold2)}
+.nav-cta{background:var(--gold);color:var(--navy);font-size:13px;font-weight:700;padding:7px 16px;border-radius:8px;margin-left:20px;text-decoration:none}
+
+/* Ad banner */
+.ad-banner{background:#fff;border:1px dashed #c0bbb0;border-radius:8px;height:90px;display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:12px;font-weight:600;margin:18px 0;letter-spacing:.05em}
+
+/* Hero — editorial, not product hero */
+.hero-blog{background:var(--navy);padding:44px 32px 40px;border-radius:16px;margin:20px 0 0;display:flex;gap:40px;align-items:center}
+.hero-blog .left{flex:1.2}
+.hero-badge{background:var(--gold);color:var(--navy);font-size:11.5px;font-weight:700;padding:5px 13px;border-radius:999px;display:inline-block;margin-bottom:14px;letter-spacing:.04em}
+.hero-blog h1{font-family:var(--fd);color:#fff;font-size:clamp(24px,3.8vw,36px);line-height:1.12;font-weight:600;margin-bottom:12px}
+.hero-blog h1 span{color:var(--gold2)}
+.hero-excerpt{color:#9aaac8;font-size:15px;line-height:1.65;margin-bottom:20px}
+.hero-meta{display:flex;align-items:center;gap:14px}
+.hero-meta img,.hero-avatar{width:32px;height:32px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--navy)}
+.hero-meta .by{color:#6d80a4;font-size:13px}.hero-meta .by b{color:#9aaac8}
+.hero-meta .rt{background:rgba(255,255,255,.08);color:#6d80a4;font-size:12px;padding:4px 10px;border-radius:999px}
+.read-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-size:14px;padding:10px 22px;border-radius:10px;text-decoration:none;margin-top:18px}
+.hero-blog .right{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden}
+.hero-img{height:200px;background:linear-gradient(135deg,#1a3060,#0c1a3a);display:flex;align-items:center;justify-content:center;font-size:48px}
+.hero-cat{padding:14px 16px;border-top:1px solid rgba(255,255,255,.08)}
+.hero-cat .chip{background:rgba(198,160,78,.15);color:var(--gold2);font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-right:6px}
+
+/* Main layout */
+.main-grid{display:grid;grid-template-columns:1fr 300px;gap:28px;margin-top:28px}
+
+/* Blog articles */
+.section-label{font-size:11.5px;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.article-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px;display:flex;gap:0}
+.article-card .img{width:140px;flex-shrink:0;background:linear-gradient(135deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;font-size:28px}
+.article-body{padding:16px 18px}
+.article-body .cat{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.article-body h3{font-family:var(--fd);font-size:16.5px;font-weight:600;line-height:1.3;color:var(--navy);margin-bottom:7px}
+.article-body p{color:var(--ink2);font-size:13.5px;line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.article-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink3);font-weight:600}
+.article-meta .dot{opacity:.4}
+
+/* Sidebar */
+.sidebar-section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:18px}
+.sidebar-section h4{font-family:var(--fd);font-size:16px;font-weight:600;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.ad-rect{background:#fff;border:1px dashed #c0bbb0;border-radius:8px;height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ink3);font-size:11px;font-weight:600;letter-spacing:.05em;gap:6px}
+.ad-rect span{font-size:22px;opacity:.3}
+
+/* Job teasers in sidebar */
+.job-teaser{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.job-teaser:last-child{border-bottom:none;padding-bottom:0}
+.jt-logo{width:36px;height:36px;border-radius:10px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--gold2);font-size:12px;font-weight:700;flex-shrink:0}
+.jt-body .title{font-size:13.5px;font-weight:600;color:var(--navy);line-height:1.3}
+.jt-body .co{font-size:12px;color:var(--ink3);font-weight:500;margin-top:2px}
+.jt-chip{display:inline-block;background:var(--gold-soft);color:var(--gold);font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;margin-top:5px}
+
+/* Category pills */
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.cat-pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 15px;font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer}
+.cat-pill.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* More articles row */
+.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.mini-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.mini-img{height:80px;background:linear-gradient(135deg,var(--navy2),#1e3d7a);display:flex;align-items:center;justify-content:center;font-size:22px}
+.mini-body{padding:12px}
+.mini-body .cat{font-size:10.5px;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.mini-body h4{font-family:var(--fd);font-size:13.5px;font-weight:600;line-height:1.35;color:var(--navy)}
+.mini-body .rt{font-size:11px;color:var(--ink3);font-weight:600;margin-top:6px}
+
+/* Footer strip */
+footer{background:var(--navy);margin-top:40px;padding:20px;text-align:center;color:#4d5e82;font-size:13px}
+footer a{color:var(--gold2);text-decoration:none;margin:0 10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Hired<b>Frex</b></div>
+  <nav>
+    <a href="#" class="active">Insights</a>
+    <a href="#">Jobs</a>
+    <a href="#">CV Builder</a>
+    <a href="#">About</a>
+    <a href="#" class="nav-cta">Post a job →</a>
+  </nav>
+</header>
+
+<div class="site">
+
+  <!-- Leaderboard ad slot -->
+  <div class="ad-banner">ADVERTISEMENT · 728×90 leaderboard</div>
+
+  <!-- Editorial hero — featured article -->
+  <div class="hero-blog">
+    <div class="left">
+      <div class="hero-badge">Featured article</div>
+      <h1>International Job Scams in 2026: <span>Every Red Flag You Need to Know</span></h1>
+      <p class="hero-excerpt">US job scam losses hit $501M in 2024 — and AI now generates convincing fake listings in minutes. Here's how to spot them before they cost you.</p>
+      <div class="hero-meta">
+        <div class="hero-avatar">HF</div>
+        <div class="by">By <b>HiredFrex Team</b></div>
+        <div class="rt">7 min read</div>
+      </div>
+      <a href="#" class="read-btn">Read the article →</a>
+    </div>
+    <div class="right">
+      <div class="hero-img">🛡️</div>
+      <div class="hero-cat">
+        <span class="chip">Worker rights</span>
+        <span class="chip">International</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category filter -->
+  <div style="margin-top:28px">
+    <div class="section-label">Browse by topic</div>
+    <div class="cats">
+      <div class="cat-pill on">All</div>
+      <div class="cat-pill">UAE jobs</div>
+      <div class="cat-pill">Salary guides</div>
+      <div class="cat-pill">CV tips</div>
+      <div class="cat-pill">Interview tips</div>
+      <div class="cat-pill">Worker rights</div>
+      <div class="cat-pill">Employer guides</div>
+    </div>
+  </div>
+
+  <!-- Main grid -->
+  <div class="main-grid">
+    <div>
+      <div class="section-label">Latest articles</div>
+
+      <div class="article-card">
+        <div class="img">📅</div>
+        <div class="article-body">
+          <div class="cat">UAE jobs · Worker rights</div>
+          <h3>UAE's New 2026 Salary Rules: What Every Worker and Employer Must Know</h3>
+          <p>Three labor-law changes took effect July 1 — a new payday rule, the Dh6,000 Emirati minimum wage, and a visa cross-check. Here's what each means in plain language.</p>
+          <div class="article-meta">
+            <span>HiredFrex Team</span><span class="dot">·</span><span>5 min read</span><span class="dot">·</span><span>Jul 7, 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="img">📊</div>
+        <div class="article-body">
+          <div class="cat">Salary guides</div>
+          <h3>Entry-Level Jobs in the UAE (2026): Salaries, Requirements, and How to Apply</h3>
+          <p>What security officer, housekeeping, and general labor roles actually pay — honest ranges from real sources, not averages that don't hold up in the field.</p>
+          <div class="article-meta">
+            <span>HiredFrex Team</span><span class="dot">·</span><span>6 min read</span><span class="dot">·</span><span>Jul 22, 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mid-content ad -->
+      <div class="ad-banner" style="height:100px;margin:4px 0 16px">ADVERTISEMENT · 728×90 in-content</div>
+
+      <div class="article-card">
+        <div class="img">💻</div>
+        <div class="article-body">
+          <div class="cat">Interview tips</div>
+          <h3>AI Job Interviews in 2026: What to Expect for Entry-Level and Service Roles</h3>
+          <p>AI-conducted interviews grew from 10% to 34% of all interviews — and it's not just tech jobs anymore. Hospitality, security, and retail are now included.</p>
+          <div class="article-meta">
+            <span>HiredFrex Team</span><span class="dot">·</span><span>7 min read</span><span class="dot">·</span><span>Jul 27, 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini article grid -->
+      <div class="section-label" style="margin-top:28px">More articles</div>
+      <div class="mini-grid">
+        <div class="mini-card">
+          <div class="mini-img">📄</div>
+          <div class="mini-body">
+            <div class="cat">CV tips</div>
+            <h4>UAE CV Format: What Gulf Recruiters Actually Expect</h4>
+            <div class="rt">4 min read</div>
+          </div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-img">✓</div>
+          <div class="mini-body">
+            <div class="cat">Employer guides</div>
+            <h4>A Fair Hiring Checklist for Employers Using AI</h4>
+            <div class="rt">5 min read</div>
+          </div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-img">💰</div>
+          <div class="mini-body">
+            <div class="cat">Salary guides</div>
+            <h4>2026 Global Salary Guide: What Tech Roles Really Pay</h4>
+            <div class="rt">8 min read</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div>
+      <!-- Ad slot -->
+      <div class="ad-rect" style="margin-bottom:18px">
+        <span>▦</span>
+        ADVERTISEMENT<br>300×250
+      </div>
+
+      <!-- Jobs teaser -->
+      <div class="sidebar-section">
+        <h4>Open roles</h4>
+        <div class="job-teaser">
+          <div class="jt-logo">RH</div>
+          <div class="jt-body">
+            <div class="title">Housekeeping Attendant</div>
+            <div class="co">Radisson · Dubai</div>
+            <div class="jt-chip">New</div>
+          </div>
+        </div>
+        <div class="job-teaser">
+          <div class="jt-logo">CP</div>
+          <div class="jt-body">
+            <div class="title">Security Officer</div>
+            <div class="co">CREW PRIVE · Dubai</div>
+            <div class="jt-chip">New</div>
+          </div>
+        </div>
+        <div class="job-teaser">
+          <div class="jt-logo">AH</div>
+          <div class="jt-body">
+            <div class="title">Waiter/Waitress</div>
+            <div class="co">Aiza Hospitality · Dubai</div>
+            <div class="jt-chip">New</div>
+          </div>
+        </div>
+        <a href="#" style="display:block;text-align:center;margin-top:14px;font-size:13px;font-weight:600;color:var(--gold);text-decoration:none">Browse all jobs →</a>
+      </div>
+
+      <!-- Second ad slot -->
+      <div class="ad-rect">
+        <span>▦</span>
+        ADVERTISEMENT<br>300×600
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="#">About</a><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a>
+  <div style="margin-top:10px">© 2026 HiredFrex.com — Jobs. Talent. Opportunity.</div>
+</footer>
+</body>
+</html>

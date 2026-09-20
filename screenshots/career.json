@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/career",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Career desk — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 499,
+      "bodyTextHash": "f2ad8313706456a6dc239d57691a4a2679d54ce4ec649456f6001419c846665d",
+      "bodyTextPrefix": "HiredFrex JOBS Career UAE Jobs Salaries Interviews Guides Latest",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/career.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Career desk — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 499,
+      "bodyTextHash": "f2ad8313706456a6dc239d57691a4a2679d54ce4ec649456f6001419c846665d",
+      "bodyTextPrefix": "HiredFrex JOBS Career UAE Jobs Salaries Interviews Guides Latest",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/career-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/career.json"
+}

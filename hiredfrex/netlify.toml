@@ -1,0 +1,121 @@
+# HiredFrex — static app + serverless API + server-rendered public pages
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# API
+# Ezoic ads.txt manager — redirects to Ezoic's managed file which includes
+# Google AdSense and all other authorized partners, updated automatically.
+[[redirects]]
+  from = "/ads.txt"
+  to = "https://srv.adstxtmanager.com/19390/hiredfrex.com"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+
+# Server-rendered, crawlable public pages
+[[redirects]]
+  from = "/sitemap"
+  to = "/.netlify/functions/pages/sitemap"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/.netlify/functions/pages/about"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to = "/.netlify/functions/pages/faq"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/.netlify/functions/pages/contact"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/.netlify/functions/pages/privacy"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/.netlify/functions/pages/terms"
+  status = 200
+
+[[redirects]]
+  from = "/disclaimer"
+  to = "/.netlify/functions/pages/disclaimer"
+  status = 200
+
+[[redirects]]
+  from = "/cookies"
+  to = "/.netlify/functions/pages/cookies"
+  status = 200
+
+[[redirects]]
+  from = "/jobs"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/cv"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/cv-builder"
+  to = "/index.html"
+  status = 200
+[[redirects]]
+  from = "/job/*"
+  to = "/.netlify/functions/pages/job/:splat"
+  status = 200
+[[redirects]]
+  from = "/blog"
+  to = "/.netlify/functions/pages/blog"
+  status = 200
+[[redirects]]
+  from = "/blog/*"
+  to = "/.netlify/functions/pages/blog/:splat"
+  status = 200
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/sitemap"
+  status = 200
+
+[[redirects]]
+  from = "/career"
+  to = "/.netlify/functions/pages/career"
+  status = 200
+[[redirects]]
+  from = "/uae-jobs"
+  to = "/.netlify/functions/pages/uae-jobs"
+  status = 200
+[[redirects]]
+  from = "/salaries"
+  to = "/.netlify/functions/pages/salaries"
+  status = 200
+[[redirects]]
+  from = "/interviews"
+  to = "/.netlify/functions/pages/interviews"
+  status = 200
+[[redirects]]
+  from = "/guides"
+  to = "/.netlify/functions/pages/guides"
+  status = 200
+[[redirects]]
+  from = "/research"
+  to = "/.netlify/functions/pages/research"
+  status = 200
+[[redirects]]
+  from = "/editorial-standards"
+  to = "/.netlify/functions/pages/editorial-standards"
+  status = 200

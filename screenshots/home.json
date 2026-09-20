@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "HiredFrex — Daily career information and jobs",
+      "hasCanvas": false,
+      "bodyTextLen": 3518,
+      "bodyTextHash": "3c174e60558d4344f24cdbff001ec63309bf1a1680b2fbffe492884bc9bf6bc7",
+      "bodyTextPrefix": "HiredFrex JOBS Career UAE Jobs Salaries Interviews Latest Sign i",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/home.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "HiredFrex — Daily career information and jobs",
+      "hasCanvas": false,
+      "bodyTextLen": 3454,
+      "bodyTextHash": "2b0d790a494ebc1cf940d91c64c4b3e36bc146f55f48df7cc00731fbd679d7bf",
+      "bodyTextPrefix": "HiredFrex JOBS Sunday, 20 September 2026 Daily career informatio",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/home-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/home.json"
+}

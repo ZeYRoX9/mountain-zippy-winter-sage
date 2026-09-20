@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/jobs/security-officer-prive-facilities-dubai",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Security Officer at PRIVE Facilities Management Services LLC — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 4407,
+      "bodyTextHash": "38c107c5c9c0caa0a488cbda29f290a10cf3ef428c1a522ef9ac9f33299d0fe2",
+      "bodyTextPrefix": "H HiredFrex Jobs Guides Insights Verification About Sign in Find",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/job.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Security Officer at PRIVE Facilities Management Services LLC — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 4407,
+      "bodyTextHash": "402d7581daec97dadc842d848ca18d408fa992b587b1ef8f7126745e2f5a82a3",
+      "bodyTextPrefix": "H HiredFrex Sign in Find jobs Jobs Guides Insights Verification ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/job-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/job.json"
+}

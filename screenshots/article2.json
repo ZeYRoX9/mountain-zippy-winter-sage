@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/blog/international-job-scams-red-flags",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "International job scams: red flags every overseas applicant should know — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 7272,
+      "bodyTextHash": "7f65296fd26dd83b423935ae370e0966814673a3f7d7997173e382ca21359d7d",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Home Insights ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/article2.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "International job scams: red flags every overseas applicant should know — HiredFrex",
+      "hasCanvas": false,
+      "bodyTextLen": 7272,
+      "bodyTextHash": "7f65296fd26dd83b423935ae370e0966814673a3f7d7997173e382ca21359d7d",
+      "bodyTextPrefix": "Skip to content HiredFrex READ FIRST. THEN APPLY. Home Insights ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/article2-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/article2.json"
+}
